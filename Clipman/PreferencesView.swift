@@ -15,9 +15,17 @@ struct SettingsView: View {
     @AppStorage("launchAtLogin") private var launchAtLogin = false
     @State private var showWipeConfirmation = false
     @StateObject private var monitor = ClipboardMonitor()
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
         Form {
+            Section  {
+                HStack {
+                    Button("closetxt") {
+                        dismiss()
+                    }
+                }
+            }
             Section {
                 Toggle("launchlog", isOn: $launchAtLogin)
                     .onChange(of: launchAtLogin) { newValue in

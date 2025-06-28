@@ -16,11 +16,24 @@ struct ClipMenuView: View {
     @State private var sortNewestFirst = true
     @State private var searchQuery: String = ""
     @State private var redrawID = UUID()
+    @State private var showSettings = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Clips")
-                .font(.headline)
+            HStack {
+                Text("Clipman")
+                    .font(.headline)
+                Button(action: {
+                    showSettings = true
+                }) {
+                    Image(systemName: "gearshape")
+                        .imageScale(.large)
+                        .padding()
+                }
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
+            }
         
                 
                 Picker("", selection: $sortNewestFirst) {
