@@ -1,0 +1,578 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F33AF9332E0FC9C10043F3C2 /* ClipmanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */; };
+		F33AF9352E0FC9C10043F3C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF9342E0FC9C10043F3C2 /* ContentView.swift */; };
+		F33AF9372E0FC9C50043F3C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33AF9362E0FC9C50043F3C2 /* Assets.xcassets */; };
+		F33AF93A2E0FC9C50043F3C2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33AF9392E0FC9C50043F3C2 /* Preview Assets.xcassets */; };
+		F33AF9452E0FC9C50043F3C2 /* ClipmanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF9442E0FC9C50043F3C2 /* ClipmanTests.swift */; };
+		F33AF94F2E0FC9C50043F3C2 /* ClipmanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF94E2E0FC9C50043F3C2 /* ClipmanUITests.swift */; };
+		F33AF9512E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF9502E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F33AF9412E0FC9C50043F3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F33AF9272E0FC9C10043F3C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F33AF92E2E0FC9C10043F3C2;
+			remoteInfo = Clipman;
+		};
+		F33AF94B2E0FC9C50043F3C2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F33AF9272E0FC9C10043F3C2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F33AF92E2E0FC9C10043F3C2;
+			remoteInfo = Clipman;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F33AF92F2E0FC9C10043F3C2 /* Clipman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipman.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipmanApp.swift; sourceTree = "<group>"; };
+		F33AF9342E0FC9C10043F3C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F33AF9362E0FC9C50043F3C2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F33AF9392E0FC9C50043F3C2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F33AF93B2E0FC9C50043F3C2 /* Clipman.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Clipman.entitlements; sourceTree = "<group>"; };
+		F33AF9402E0FC9C50043F3C2 /* ClipmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClipmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F33AF9442E0FC9C50043F3C2 /* ClipmanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipmanTests.swift; sourceTree = "<group>"; };
+		F33AF94A2E0FC9C50043F3C2 /* ClipmanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClipmanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F33AF94E2E0FC9C50043F3C2 /* ClipmanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipmanUITests.swift; sourceTree = "<group>"; };
+		F33AF9502E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipmanUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F33AF92C2E0FC9C10043F3C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F33AF93D2E0FC9C50043F3C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F33AF9472E0FC9C50043F3C2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F33AF9262E0FC9C10043F3C2 = {
+			isa = PBXGroup;
+			children = (
+				F33AF9312E0FC9C10043F3C2 /* Clipman */,
+				F33AF9432E0FC9C50043F3C2 /* ClipmanTests */,
+				F33AF94D2E0FC9C50043F3C2 /* ClipmanUITests */,
+				F33AF9302E0FC9C10043F3C2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F33AF9302E0FC9C10043F3C2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F33AF92F2E0FC9C10043F3C2 /* Clipman.app */,
+				F33AF9402E0FC9C50043F3C2 /* ClipmanTests.xctest */,
+				F33AF94A2E0FC9C50043F3C2 /* ClipmanUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F33AF9312E0FC9C10043F3C2 /* Clipman */ = {
+			isa = PBXGroup;
+			children = (
+				F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */,
+				F33AF9342E0FC9C10043F3C2 /* ContentView.swift */,
+				F33AF9362E0FC9C50043F3C2 /* Assets.xcassets */,
+				F33AF93B2E0FC9C50043F3C2 /* Clipman.entitlements */,
+				F33AF9382E0FC9C50043F3C2 /* Preview Content */,
+			);
+			path = Clipman;
+			sourceTree = "<group>";
+		};
+		F33AF9382E0FC9C50043F3C2 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F33AF9392E0FC9C50043F3C2 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F33AF9432E0FC9C50043F3C2 /* ClipmanTests */ = {
+			isa = PBXGroup;
+			children = (
+				F33AF9442E0FC9C50043F3C2 /* ClipmanTests.swift */,
+			);
+			path = ClipmanTests;
+			sourceTree = "<group>";
+		};
+		F33AF94D2E0FC9C50043F3C2 /* ClipmanUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F33AF94E2E0FC9C50043F3C2 /* ClipmanUITests.swift */,
+				F33AF9502E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift */,
+			);
+			path = ClipmanUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F33AF92E2E0FC9C10043F3C2 /* Clipman */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F33AF9542E0FC9C50043F3C2 /* Build configuration list for PBXNativeTarget "Clipman" */;
+			buildPhases = (
+				F33AF92B2E0FC9C10043F3C2 /* Sources */,
+				F33AF92C2E0FC9C10043F3C2 /* Frameworks */,
+				F33AF92D2E0FC9C10043F3C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Clipman;
+			productName = Clipman;
+			productReference = F33AF92F2E0FC9C10043F3C2 /* Clipman.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F33AF93F2E0FC9C50043F3C2 /* ClipmanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F33AF9572E0FC9C50043F3C2 /* Build configuration list for PBXNativeTarget "ClipmanTests" */;
+			buildPhases = (
+				F33AF93C2E0FC9C50043F3C2 /* Sources */,
+				F33AF93D2E0FC9C50043F3C2 /* Frameworks */,
+				F33AF93E2E0FC9C50043F3C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F33AF9422E0FC9C50043F3C2 /* PBXTargetDependency */,
+			);
+			name = ClipmanTests;
+			productName = ClipmanTests;
+			productReference = F33AF9402E0FC9C50043F3C2 /* ClipmanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F33AF9492E0FC9C50043F3C2 /* ClipmanUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F33AF95A2E0FC9C50043F3C2 /* Build configuration list for PBXNativeTarget "ClipmanUITests" */;
+			buildPhases = (
+				F33AF9462E0FC9C50043F3C2 /* Sources */,
+				F33AF9472E0FC9C50043F3C2 /* Frameworks */,
+				F33AF9482E0FC9C50043F3C2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F33AF94C2E0FC9C50043F3C2 /* PBXTargetDependency */,
+			);
+			name = ClipmanUITests;
+			productName = ClipmanUITests;
+			productReference = F33AF94A2E0FC9C50043F3C2 /* ClipmanUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F33AF9272E0FC9C10043F3C2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1520;
+				LastUpgradeCheck = 1520;
+				TargetAttributes = {
+					F33AF92E2E0FC9C10043F3C2 = {
+						CreatedOnToolsVersion = 15.2;
+					};
+					F33AF93F2E0FC9C50043F3C2 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = F33AF92E2E0FC9C10043F3C2;
+					};
+					F33AF9492E0FC9C50043F3C2 = {
+						CreatedOnToolsVersion = 15.2;
+						TestTargetID = F33AF92E2E0FC9C10043F3C2;
+					};
+				};
+			};
+			buildConfigurationList = F33AF92A2E0FC9C10043F3C2 /* Build configuration list for PBXProject "Clipman" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F33AF9262E0FC9C10043F3C2;
+			productRefGroup = F33AF9302E0FC9C10043F3C2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F33AF92E2E0FC9C10043F3C2 /* Clipman */,
+				F33AF93F2E0FC9C50043F3C2 /* ClipmanTests */,
+				F33AF9492E0FC9C50043F3C2 /* ClipmanUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F33AF92D2E0FC9C10043F3C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F33AF93A2E0FC9C50043F3C2 /* Preview Assets.xcassets in Resources */,
+				F33AF9372E0FC9C50043F3C2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F33AF93E2E0FC9C50043F3C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F33AF9482E0FC9C50043F3C2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F33AF92B2E0FC9C10043F3C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F33AF9352E0FC9C10043F3C2 /* ContentView.swift in Sources */,
+				F33AF9332E0FC9C10043F3C2 /* ClipmanApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F33AF93C2E0FC9C50043F3C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F33AF9452E0FC9C50043F3C2 /* ClipmanTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F33AF9462E0FC9C50043F3C2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F33AF94F2E0FC9C50043F3C2 /* ClipmanUITests.swift in Sources */,
+				F33AF9512E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F33AF9422E0FC9C50043F3C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F33AF92E2E0FC9C10043F3C2 /* Clipman */;
+			targetProxy = F33AF9412E0FC9C50043F3C2 /* PBXContainerItemProxy */;
+		};
+		F33AF94C2E0FC9C50043F3C2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F33AF92E2E0FC9C10043F3C2 /* Clipman */;
+			targetProxy = F33AF94B2E0FC9C50043F3C2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		F33AF9522E0FC9C50043F3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F33AF9532E0FC9C50043F3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		F33AF9552E0FC9C50043F3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clipman/Clipman.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Clipman/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.Clipman;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F33AF9562E0FC9C50043F3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Clipman/Clipman.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Clipman/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.Clipman;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		F33AF9582E0FC9C50043F3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.ClipmanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clipman.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clipman";
+			};
+			name = Debug;
+		};
+		F33AF9592E0FC9C50043F3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.7;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.ClipmanTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Clipman.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Clipman";
+			};
+			name = Release;
+		};
+		F33AF95B2E0FC9C50043F3C2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.ClipmanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Clipman;
+			};
+			name = Debug;
+		};
+		F33AF95C2E0FC9C50043F3C2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.ClipmanUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = Clipman;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F33AF92A2E0FC9C10043F3C2 /* Build configuration list for PBXProject "Clipman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F33AF9522E0FC9C50043F3C2 /* Debug */,
+				F33AF9532E0FC9C50043F3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F33AF9542E0FC9C50043F3C2 /* Build configuration list for PBXNativeTarget "Clipman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F33AF9552E0FC9C50043F3C2 /* Debug */,
+				F33AF9562E0FC9C50043F3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F33AF9572E0FC9C50043F3C2 /* Build configuration list for PBXNativeTarget "ClipmanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F33AF9582E0FC9C50043F3C2 /* Debug */,
+				F33AF9592E0FC9C50043F3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F33AF95A2E0FC9C50043F3C2 /* Build configuration list for PBXNativeTarget "ClipmanUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F33AF95B2E0FC9C50043F3C2 /* Debug */,
+				F33AF95C2E0FC9C50043F3C2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F33AF9272E0FC9C10043F3C2 /* Project object */;
+}
