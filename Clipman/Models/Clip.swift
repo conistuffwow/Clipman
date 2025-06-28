@@ -11,10 +11,12 @@ struct Clip: Identifiable, Codable, Equatable, Hashable {
     let id: UUID
     let text: String
     var isFavourite: Bool
+    let createdAt: Date
     
-    init(id: UUID = UUID(), text: String, isFavourite: Bool = false) {
+    init(id: UUID = UUID(), text: String, isFavourite: Bool = false, createdAt: Date = Date()) {
         self.id = id
         self.text = text
         self.isFavourite = isFavourite
+        self.createdAt = createdAt
     }
 }
