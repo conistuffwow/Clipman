@@ -10,27 +10,56 @@ import SwiftUI
 
 struct ClipMenuView: View {
     @StateObject private var monitor = ClipboardMonitor()
+    @State private var isExpanded = false
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Text("Recent Clips")
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Clips")
                 .font(.headline)
-                .padding(.bottom, 5)
-            ForEach(monitor.clips.prefix(5), id: \.self) { clip in
-                Button(action: {
-                    NSPasteboard.general.clearContents()
-                    NSPasteboard.general.setString(clip, forType: .string)
-                }) {
-                    Text(clip)
-                        .lineLimit(1)
-                        .truncationMode(.tail)
-                        .padding(5)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 5) {
+                    ForEach(displayedClips(), id: \.self) { clip in
+                        HStack {
+                            Button(action: {
+                                NSPasteboard.general.clearContents()
+                                NSPasteboard.general.setString(clip, forType: .string)
+                            }) {
+                                Text(clip)
+                                    .lineLimit(1)
+                                    .truncationMode(.tail)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            Button(action: {
+                                monitor.delete(clip: clip)
+                            }) {
+                                Image(systemName: "trash")
+                                    .foregroundColor(.red)
+                                    .help("Delete Clip")
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                        }
+                    }
                 }
-                .buttonStyle(PlainButtonStyle())
             }
+            
+            Divider()
+            
+            Button(isExpanded ? "Collapse" : "Expand") {
+                withAnimation(.easeInOut) {
+                    isExpanded.toggle()
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.top, 4)
         }
         .padding()
-        .frame(width: 200)
+        .frame(width: 300, height: isExpanded ? 400 : 200)
+    }
+    
+    private func displayedClips() -> [String] {
+        return isExpanded ? monitor.clips : Array(monitor.clips.prefix(5))
     }
 }
