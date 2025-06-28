@@ -15,6 +15,7 @@
 		F33AF94F2E0FC9C50043F3C2 /* ClipmanUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF94E2E0FC9C50043F3C2 /* ClipmanUITests.swift */; };
 		F33AF9512E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF9502E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift */; };
 		F33AF95E2E0FCA760043F3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF95D2E0FCA760043F3C2 /* AppDelegate.swift */; };
+		F39F62B62E1003250097FE24 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F62B52E1003250097FE24 /* Clip.swift */; };
 		F3C537782E0FCEB800D40622 /* ClipMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C537772E0FCEB800D40622 /* ClipMenuView.swift */; };
 		F3C5377A2E0FD02B00D40622 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C537792E0FD02B00D40622 /* ClipboardMonitor.swift */; };
 		F3C5377C2E0FDEF700D40622 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5377B2E0FDEF700D40622 /* FileHelper.swift */; };
@@ -50,6 +51,7 @@
 		F33AF94E2E0FC9C50043F3C2 /* ClipmanUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipmanUITests.swift; sourceTree = "<group>"; };
 		F33AF9502E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipmanUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F33AF95D2E0FCA760043F3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F39F62B52E1003250097FE24 /* Clip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Models/Clip.swift; sourceTree = "<group>"; };
 		F3C537772E0FCEB800D40622 /* ClipMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipMenuView.swift; sourceTree = "<group>"; };
 		F3C537792E0FD02B00D40622 /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
 		F3C5377B2E0FDEF700D40622 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */,
 				F33AF9342E0FC9C10043F3C2 /* ContentView.swift */,
 				F33AF9362E0FC9C50043F3C2 /* Assets.xcassets */,
+				F39F62B52E1003250097FE24 /* Clip.swift */,
 				F33AF93B2E0FC9C50043F3C2 /* Clipman.entitlements */,
 				F33AF9382E0FC9C50043F3C2 /* Preview Content */,
 				F33AF95D2E0FCA760043F3C2 /* AppDelegate.swift */,
@@ -272,6 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33AF95E2E0FCA760043F3C2 /* AppDelegate.swift in Sources */,
+				F39F62B62E1003250097FE24 /* Clip.swift in Sources */,
 				F3C537782E0FCEB800D40622 /* ClipMenuView.swift in Sources */,
 				F3C5377A2E0FD02B00D40622 /* ClipboardMonitor.swift in Sources */,
 				F33AF9352E0FC9C10043F3C2 /* ContentView.swift in Sources */,
@@ -436,6 +440,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Clipman/Clipman.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -461,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Clipman/Clipman.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;

@@ -9,7 +9,7 @@ import Foundation
 import AppKit
 
 class ClipboardMonitor: ObservableObject {
-    @Published var clips: [String] = []
+    @Published var clips: [Clip] = []
     private var lastChangeCount = NSPasteboard.general.changeCount
     private let fileURL = appSupportFileURL()
     
@@ -25,8 +25,9 @@ class ClipboardMonitor: ObservableObject {
             lastChangeCount = pasteboard.changeCount
             if let string = pasteboard.string(forType: .string) {
                 DispatchQueue.main.async {
-                    if !self.clips.contains(string) {
-                        self.clips.insert(string, at: 0)
+                    if !self.clips.contains(where: { $0.text == string }) {
+                        let newClip = Clip(text: string)
+                        self.clips.insert(newClip, at: 0)
                         if self.clips.count > 100 {
                             self.clips.removeLast()
                         }
@@ -49,7 +50,7 @@ class ClipboardMonitor: ObservableObject {
     private func loadClips() {
         do {
             let data = try Data(contentsOf: fileURL)
-            let savedClips = try JSONDecoder().decode([String].self, from: data)
+            let savedClips = try JSONDecoder().decode([Clip].self, from: data)
             self.clips = savedClips
         } catch {
             print("No saved clips...")
@@ -57,9 +58,16 @@ class ClipboardMonitor: ObservableObject {
         }
     }
     
-    func delete(clip: String) {
+    func delete(clip: Clip) {
         if let index = clips.firstIndex(of: clip) {
             clips.remove(at: index)
+            saveClips()
+        }
+    }
+    
+    func toggleFavourite(clip: Clip) {
+        if let index = clips.firstIndex(of: clip) {
+            clips[index].isFavourite.toggle()
             saveClips()
         }
     }
