@@ -17,6 +17,7 @@
 		F33AF95E2E0FCA760043F3C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF95D2E0FCA760043F3C2 /* AppDelegate.swift */; };
 		F39F62B62E1003250097FE24 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F62B52E1003250097FE24 /* Clip.swift */; };
 		F39F62B82E1012690097FE24 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F62B72E1012690097FE24 /* PreferencesView.swift */; };
+		F39F62BC2E1066300097FE24 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F39F62BE2E1066300097FE24 /* Localizable.strings */; };
 		F3C537782E0FCEB800D40622 /* ClipMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C537772E0FCEB800D40622 /* ClipMenuView.swift */; };
 		F3C5377A2E0FD02B00D40622 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C537792E0FD02B00D40622 /* ClipboardMonitor.swift */; };
 		F3C5377C2E0FDEF700D40622 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5377B2E0FDEF700D40622 /* FileHelper.swift */; };
@@ -54,6 +55,9 @@
 		F33AF95D2E0FCA760043F3C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F39F62B52E1003250097FE24 /* Clip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Clip.swift; path = Models/Clip.swift; sourceTree = "<group>"; };
 		F39F62B72E1012690097FE24 /* PreferencesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesView.swift; sourceTree = "<group>"; };
+		F39F62BD2E1066300097FE24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F39F62BF2E1066340097FE24 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F39F62C02E106C880097FE24 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F3C537772E0FCEB800D40622 /* ClipMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipMenuView.swift; sourceTree = "<group>"; };
 		F3C537792E0FD02B00D40622 /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
 		F3C5377B2E0FDEF700D40622 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
@@ -107,6 +111,7 @@
 		F33AF9312E0FC9C10043F3C2 /* Clipman */ = {
 			isa = PBXGroup;
 			children = (
+				F39F62B92E1066140097FE24 /* Resources */,
 				F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */,
 				F33AF9342E0FC9C10043F3C2 /* ContentView.swift */,
 				F33AF9362E0FC9C50043F3C2 /* Assets.xcassets */,
@@ -145,6 +150,14 @@
 				F33AF9502E0FC9C50043F3C2 /* ClipmanUITestsLaunchTests.swift */,
 			);
 			path = ClipmanUITests;
+			sourceTree = "<group>";
+		};
+		F39F62B92E1066140097FE24 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F39F62BE2E1066300097FE24 /* Localizable.strings */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,6 +246,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				de,
 			);
 			mainGroup = F33AF9262E0FC9C10043F3C2;
 			productRefGroup = F33AF9302E0FC9C10043F3C2 /* Products */;
@@ -252,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F33AF93A2E0FC9C50043F3C2 /* Preview Assets.xcassets in Resources */,
+				F39F62BC2E1066300097FE24 /* Localizable.strings in Resources */,
 				F33AF9372E0FC9C50043F3C2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,6 +335,19 @@
 			targetProxy = F33AF94B2E0FC9C50043F3C2 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F39F62BE2E1066300097FE24 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F39F62BD2E1066300097FE24 /* en */,
+				F39F62BF2E1066340097FE24 /* fr */,
+				F39F62C02E106C880097FE24 /* de */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F33AF9522E0FC9C50043F3C2 /* Debug */ = {
@@ -446,6 +475,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Clipman/Clipman.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -472,6 +502,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Clipman/Clipman.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;

@@ -38,7 +38,7 @@ class ClipboardMonitor: ObservableObject {
         }
     }
     
-    private func saveClips() {
+    func saveClips() {
         do {
             let data = try JSONEncoder().encode(clips)
             try data.write(to: fileURL)
@@ -47,7 +47,7 @@ class ClipboardMonitor: ObservableObject {
         }
     }
     
-    private func loadClips() {
+    func loadClips() {
         do {
             let data = try Data(contentsOf: fileURL)
             let savedClips = try JSONDecoder().decode([Clip].self, from: data)

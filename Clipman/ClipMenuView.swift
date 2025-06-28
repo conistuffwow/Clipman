@@ -14,25 +14,33 @@ struct ClipMenuView: View {
     @State private var showDeleteConfirmation = false
     @State private var selectedClipToDelete: Clip? = nil
     @State private var sortNewestFirst = true
-
+    @State private var searchQuery: String = ""
+    @State private var redrawID = UUID()
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Clips")
                 .font(.headline)
-            HStack {
-                Text("Sort:")
-                    .font(.caption)
-                    .foregroundColor(.secondary)
+        
                 
                 Picker("", selection: $sortNewestFirst) {
-                    Text("Newest First").tag(true)
-                    Text("Oldest First").tag(false)
+                    Text("newest-text").tag(true)
+                    Text("oldest-text").tag(false)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .frame(width: 180)
-            }
+                .frame(maxWidth: .infinity)
+                .multilineTextAlignment(.center)
+            
             .padding(.bottom, 4)
+            
+            if isExpanded {
+                TextField("search-text", text: $searchQuery)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.bottom, 4)
+                    .onChange(of: searchQuery) { _ in
+                        redrawID = UUID()
+                    }
+            }
             ScrollView {
                 VStack(alignment: .leading, spacing: 5) {
                     ForEach(displayedClips(), id: \.self) { clip in
@@ -56,7 +64,7 @@ struct ClipMenuView: View {
                             }) {
                                 Image(systemName: clip.isFavourite ? "star.fill" : "star")
                                     .foregroundColor(clip.isFavourite ? .yellow : .gray)
-                                    .help(clip.isFavourite ? "Unfavourite" : "Favourite")
+                                    .help(clip.isFavourite ? "unfavtxt" : "favtxt")
                             }
                             .buttonStyle(BorderlessButtonStyle())
                             
@@ -70,26 +78,27 @@ struct ClipMenuView: View {
                             }) {
                                 Image(systemName: "trash")
                                     .foregroundColor(.red)
-                                    .help("Delete Clip")
+                                    .help("deltx")
                             }
                             .buttonStyle(BorderlessButtonStyle())
                         }
                     }
+                    .id(redrawID)
                 }
             }
             
-            .alert("Are you SURE you want to delete this clip?", isPresented: $showDeleteConfirmation) {
-                Button("Delete", role: .destructive) {
+            .alert("alertinsidetxt", isPresented: $showDeleteConfirmation) {
+                Button("deltx", role: .destructive) {
                     if let clip = selectedClipToDelete {
                         monitor.delete(clip: clip)
                     }
                 }
-                Button("Cancel", role: .cancel) { }
+                Button("canceltx", role: .cancel) { }
             }
             
             Divider()
             
-            Button(isExpanded ? "Collapse" : "Expand") {
+            Button(isExpanded ? "collapsetxt" : "expandtxr") {
                 withAnimation(.easeInOut) {
                     isExpanded.toggle()
                 }
@@ -102,10 +111,14 @@ struct ClipMenuView: View {
     }
     
     private func displayedClips() -> [Clip] {
-        let ordered = sortNewestFirst
-        ? monitor.clips.sorted { $0.createdAt > $1.createdAt }
-        : monitor.clips.sorted { $0.createdAt < $1.createdAt }
-        return isExpanded ? ordered : Array(ordered.prefix(5))
+        let filtered = monitor.clips.filter { clip in
+            searchQuery.isEmpty || clip.text.localizedCaseInsensitiveContains(searchQuery)
+        }
+        
+        let sorted = sortNewestFirst
+        ? filtered.sorted { $0.createdAt > $1.createdAt }
+        : filtered.sorted { $0.createdAt < $1.createdAt }
+        return isExpanded ? sorted : Array(sorted.prefix(5))
     }
     
     func relativeDate(_ date: Date) -> String {

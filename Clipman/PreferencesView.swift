@@ -7,21 +7,58 @@
 
 import Foundation
 import SwiftUI
+import ServiceManagement
 
 struct SettingsView: View {
     @AppStorage("sortNewestFirst") var sortNewestFirst: Bool = true
     @AppStorage("maxClips") var maxClips: Int = 100
+    @AppStorage("launchAtLogin") private var launchAtLogin = false
+    @State private var showWipeConfirmation = false
+    @StateObject private var monitor = ClipboardMonitor()
     
     var body: some View {
         Form {
+            Section {
+                Toggle("launchlog", isOn: $launchAtLogin)
+                    .onChange(of: launchAtLogin) { newValue in
+                        toggleLaunchAtLogin(enabled: newValue)}
+            }
             
-            Section(header: Text("")) {
-                Stepper(value: $maxClips, in: 10...1000, step: 10) {
-                    Text("Max Clips: \(maxClips)")
+            Section {
+                Button(role: .destructive) {
+                    showWipeConfirmation = true
+                } label: {
+                    Label("wipeclips", systemImage: "trash")
                 }
             }
         }
+        .alert("alertpref", isPresented: $showWipeConfirmation) {
+            Button("delall", role: .destructive) {
+                monitor.clips.removeAll()
+                monitor.saveClips()
+                monitor.loadClips()
+            }
+            Button("canceltx", role: .cancel) {}
+            
+            
+        }
         .padding()
         .frame(width: 250, height: 100)
+    }
+    
+    
+}
+
+func toggleLaunchAtLogin(enabled: Bool) {
+    if #available(macOS 13.0, *) {
+        do {
+            if enabled {
+                try SMAppService.mainApp.register()
+            } else {
+                try SMAppService.mainApp.unregister()
+            }
+        } catch {
+            print("Failed to change setting")
+        }
     }
 }

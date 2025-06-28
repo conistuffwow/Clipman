@@ -1,0 +1,17 @@
+"clips-text" = "Clips:";
+"sort-text" = "Art:";
+"newest-text" = "Neueste Zuerst";
+"oldest-text" = "Ältester Zuerst";
+"search-text" = "Clips suchen...";
+"favtxt" = "Favorit";
+"unfavtxt" = "Nicht-Favorit";
+"Deletetxt" = "Clip löschen";
+"alertinsidetxt" = "Sind Sie SICHER, dass Sie diesen Clip löschen möchten?";
+"deltx" = "Löschen";
+"canceltx" = "Abbrechen";
+"collapsetxt" = "Einsturz";
+"expandtxr" = "Erweitern";
+"launchlog" = "Starten Sie Clipman bei der Anmeldung";
+"wipeclips" = "Clips abwischen";
+"alertpref" = "Sind Sie SICHER, dass Sie ALLE Clips löschen möchten?";
+"delall" = "ALLE LÖSCHEN";

@@ -1,0 +1,17 @@
+"clips-text" = "Clips:";
+"sort-text" = "Sort:";
+"newest-text" = "Newest First";
+"oldest-text" = "Oldest First";
+"search-text" = "Search clips...";
+"favtxt" = "Favourite";
+"unfavtxt" = "Unfavourite";
+"Deletetxt" = "Delete Clip";
+"alertinsidetxt" = "Are you SURE you want to delete this clip?";
+"deltx" = "Delete";
+"canceltx" = "Cancel";
+"collapsetxt" = "Collapse";
+"expandtxr" = "Expand";
+"launchlog" = "Launch ClipMan at login";
+"wipeclips" = "Wipe Clips";
+"alertpref" = "Are you SURE you want to delete ALL clips?";
+"delall" = "DELETE ALL";
