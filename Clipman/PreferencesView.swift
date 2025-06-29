@@ -14,6 +14,7 @@ struct SettingsView: View {
     @AppStorage("sortNewestFirst") var sortNewestFirst: Bool = true
     @AppStorage("maxClips") var maxClips: Int = 100
     @AppStorage("launchAtLogin") private var launchAtLogin = false
+    @AppStorage("useICloud") private var useICloud = false
     @State private var showWipeConfirmation = false
     @StateObject private var monitor = ClipboardMonitor()
     @Environment(\.dismiss) var dismiss
@@ -42,10 +43,15 @@ struct SettingsView: View {
             }
             
             Section {
-                Button("About Clipman") {
+                Button("abttxt") {
                     NSApp.orderFrontStandardAboutPanel(nil)
                 }
             }
+            
+            // Section {
+             //   Toggle("useicloudtext", isOn: $useICloud)
+              //      .help("helpicloud")
+            // }
         }
         .alert("alertpref", isPresented: $showWipeConfirmation) {
             Button("delall", role: .destructive) {

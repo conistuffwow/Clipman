@@ -11,13 +11,13 @@ import AppKit
 class ClipboardMonitor: ObservableObject {
     @Published var clips: [Clip] = []
     private var lastChangeCount = NSPasteboard.general.changeCount
-    private let fileURL = appSupportFileURL()
     
     init() {
         loadClips()
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             self.checkClipboard()}
     }
+    
     
     private func checkClipboard() {
         let pasteboard = NSPasteboard.general
@@ -39,15 +39,17 @@ class ClipboardMonitor: ObservableObject {
     }
     
     func saveClips() {
+        let fileURL = clipStorageURL()
         do {
             let data = try JSONEncoder().encode(clips)
-            try data.write(to: fileURL)
+            try data.write(to: fileURL, options: .atomic)
         } catch {
             print("Couldn't save clips: \(error)")
         }
     }
     
     func loadClips() {
+        let fileURL = clipStorageURL()
         do {
             let data = try Data(contentsOf: fileURL)
             let savedClips = try JSONDecoder().decode([Clip].self, from: data)
@@ -78,4 +80,26 @@ class ClipboardMonitor: ObservableObject {
             saveClips()
         }
     }
+    
+    func iCloudDirectory() -> URL? {
+        FileManager.default.url(forUbiquityContainerIdentifier: nil)?
+            .appendingPathComponent("Documents/Clipman", isDirectory: true)
+    }
+    
+    func clipStorageURL() -> URL {
+        let fileManager = FileManager.default
+
+        if Settingsa.shared.useICloud,
+           let iCloudURL = fileManager.url(forUbiquityContainerIdentifier: nil)?
+                .appendingPathComponent("Documents/Clipman", isDirectory: true) {
+            try? fileManager.createDirectory(at: iCloudURL, withIntermediateDirectories: true)
+            return iCloudURL.appendingPathComponent("clips.json")
+        } else {
+            let localURL = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first!
+                .appendingPathComponent("Clipman", isDirectory: true)
+            try? fileManager.createDirectory(at: localURL, withIntermediateDirectories: true)
+            return localURL.appendingPathComponent("clips.json")
+        }
+    }
 }
+

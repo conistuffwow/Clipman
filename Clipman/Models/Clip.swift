@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Clip: Codable, Equatable, Hashable {
+struct Clip: Identifiable, Codable, Equatable, Hashable {
     let id: UUID
     let text: String
     var isFavourite: Bool

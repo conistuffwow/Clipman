@@ -23,26 +23,34 @@ struct ClipMenuView: View {
             HStack {
                 Text("Clipman")
                     .font(.headline)
-                Button(action: {
-                    showSettings = true
-                }) {
-                    Image(systemName: "gearshape")
-                        .imageScale(.large)
-                        .padding()
-                }
-            }
-            .sheet(isPresented: $showSettings) {
-                SettingsView()
-            }
-        
+                
+                Spacer()
                 
                 Picker("", selection: $sortNewestFirst) {
                     Text("newest-text").tag(true)
                     Text("oldest-text").tag(false)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .frame(maxWidth: .infinity)
-                .multilineTextAlignment(.center)
+                .frame(width: 160)
+                .padding(.trailing, 8)
+                
+                Button(action: {
+                    showSettings = true
+                }) {
+                    Image(systemName: "gearshape")
+                        .imageScale(.large)
+                        .padding(4)
+                        .help("Settings")
+                }
+                .buttonStyle(PlainButtonStyle())
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
+            }
+            
+            
+            
+        
             
             .padding(.bottom, 4)
             
@@ -68,13 +76,19 @@ struct ClipMenuView: View {
                                     NSPasteboard.general.setString(clip.text, forType: .string)
                                 }
                             }) {
-                                Text(clip.text)
-                                    .lineLimit(1)
-                                    .truncationMode(.tail)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text(relativeDate(clip.createdAt))
-                                    .font(.caption2)
-                                    .foregroundColor(.secondary)
+                                HStack {
+                                    Image(systemName: iconName(for: clip.text))
+                                        .foregroundColor(.accentColor)
+                                        
+                                    Text(clip.text)
+                                        .lineLimit(1)
+                                        .truncationMode(.tail)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+                                    Text(relativeDate(clip.createdAt))
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+                                }
+                                
                             }
                             .buttonStyle(PlainButtonStyle())
                             
@@ -114,7 +128,7 @@ struct ClipMenuView: View {
 
                         }
                     }
-                    .id(redrawID)
+                    .id(sortNewestFirst)
                 }
             }
             
@@ -164,5 +178,13 @@ struct ClipMenuView: View {
     
     func isURL(_ text: String) -> Bool {
         text.lowercased().hasPrefix("http://") || text.lowercased().hasPrefix("https://")
+    }
+    
+    func iconName(for text: String) -> String {
+        if isURL(text) {
+            return "globe"
+        } else {
+            return "doc.text"
+        }
     }
 }
