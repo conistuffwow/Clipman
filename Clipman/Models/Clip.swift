@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Clip: Identifiable, Codable, Equatable, Hashable {
+struct Clip: Codable, Equatable, Hashable {
     let id: UUID
     let text: String
     var isFavourite: Bool
@@ -16,13 +16,15 @@ struct Clip: Identifiable, Codable, Equatable, Hashable {
     var isImage: Bool {
         imageFilename != nil
     }
+    var isPinned: Bool = false
     
-    init(id: UUID = UUID(), text: String, isFavourite: Bool = false, createdAt: Date = Date(), imageFilename: String? = nil) {
+    init(id: UUID = UUID(), text: String, isFavourite: Bool = false, createdAt: Date = Date(), imageFilename: String? = nil, isPinned: Bool = false) {
         self.id = id
         self.text = text
         self.isFavourite = isFavourite
         self.createdAt = createdAt
         self.imageFilename = imageFilename
+        self.isPinned = isPinned
     }
     
 }

@@ -16,3 +16,5 @@
 "alertpref" = "Êtes-vous SÛR de vouloir supprimer TOUS les clips?";
 "delall" = "SUPPRIMER TOUT";
 "closetxt" = "Fermer";
+"unpintxt" = "Détacher";
+"pintxt" = "Épingle";
