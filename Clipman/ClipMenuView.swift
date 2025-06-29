@@ -59,8 +59,14 @@ struct ClipMenuView: View {
                     ForEach(displayedClips(), id: \.self) { clip in
                         HStack {
                             Button(action: {
-                                NSPasteboard.general.clearContents()
-                                NSPasteboard.general.setString(clip.text, forType: .string)
+                                if isURL(clip.text) {
+                                    if let url = URL(string: clip.text) {
+                                        NSWorkspace.shared.open(url)
+                                    }
+                                } else {
+                                    NSPasteboard.general.clearContents()
+                                    NSPasteboard.general.setString(clip.text, forType: .string)
+                                }
                             }) {
                                 Text(clip.text)
                                     .lineLimit(1)
@@ -76,11 +82,21 @@ struct ClipMenuView: View {
                                 monitor.toggleFavourite(clip: clip)
                             }) {
                                 Image(systemName: clip.isFavourite ? "star.fill" : "star")
-                                    .foregroundColor(clip.isFavourite ? .yellow : .gray)
+                                    .foregroundColor(clip.isFavourite ? .accentColor : .gray)
                                     .help(clip.isFavourite ? "unfavtxt" : "favtxt")
                             }
                             .buttonStyle(BorderlessButtonStyle())
-                            
+                            if isURL(clip.text) {
+                                Button(action: {
+                                    NSPasteboard.general.clearContents()
+                                    NSPasteboard.general.setString(clip.text, forType: .string)
+                                }) {
+                                    Image(systemName: "doc.on.doc")
+                                        .foregroundColor(.accentColor)
+                                        
+                                }
+                                .buttonStyle(BorderlessButtonStyle())
+                            }
                             Button(action: {
                                 if clip.isFavourite {
                                     selectedClipToDelete = clip
@@ -94,6 +110,8 @@ struct ClipMenuView: View {
                                     .help("deltx")
                             }
                             .buttonStyle(BorderlessButtonStyle())
+                            
+
                         }
                     }
                     .id(redrawID)
@@ -120,7 +138,7 @@ struct ClipMenuView: View {
             .padding(.top, 4)
         }
         .padding()
-        .frame(width: 300, height: isExpanded ? 400 : 200)
+        .frame(width: 400, height: isExpanded ? 500 : 310)
     }
     
     private func displayedClips() -> [Clip] {
@@ -128,15 +146,23 @@ struct ClipMenuView: View {
             searchQuery.isEmpty || clip.text.localizedCaseInsensitiveContains(searchQuery)
         }
         
-        let sorted = sortNewestFirst
-        ? filtered.sorted { $0.createdAt > $1.createdAt }
-        : filtered.sorted { $0.createdAt < $1.createdAt }
-        return isExpanded ? sorted : Array(sorted.prefix(5))
+        let sorted = filtered.sorted {
+            if $0.isFavourite != $1.isFavourite {
+                return $0.isFavourite
+            } else {
+                return sortNewestFirst ? $0.createdAt > $1.createdAt : $0.createdAt < $1.createdAt
+            }
+        }
+        return isExpanded ? sorted : Array(sorted.prefix(10))
     }
     
     func relativeDate(_ date: Date) -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .short
         return formatter.localizedString(for: date, relativeTo: Date())
+    }
+    
+    func isURL(_ text: String) -> Bool {
+        text.lowercased().hasPrefix("http://") || text.lowercased().hasPrefix("https://")
     }
 }

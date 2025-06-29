@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import ServiceManagement
+import AppKit
 
 struct SettingsView: View {
     @AppStorage("sortNewestFirst") var sortNewestFirst: Bool = true
@@ -39,6 +40,12 @@ struct SettingsView: View {
                     Label("wipeclips", systemImage: "trash")
                 }
             }
+            
+            Section {
+                Button("About Clipman") {
+                    NSApp.orderFrontStandardAboutPanel(nil)
+                }
+            }
         }
         .alert("alertpref", isPresented: $showWipeConfirmation) {
             Button("delall", role: .destructive) {
@@ -51,7 +58,7 @@ struct SettingsView: View {
             
         }
         .padding()
-        .frame(width: 250, height: 100)
+        .frame(width: 300, height: 200)
     }
     
     
