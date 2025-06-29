@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F3369CF32E10BD5B00383DC0 /* KeyboardShortcuts in Frameworks */ = {isa = PBXBuildFile; productRef = F3369CF22E10BD5B00383DC0 /* KeyboardShortcuts */; };
+		F3369CF52E10CB3200383DC0 /* UpdateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3369CF42E10CB3200383DC0 /* UpdateHelper.swift */; };
 		F33AF9332E0FC9C10043F3C2 /* ClipmanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */; };
 		F33AF9352E0FC9C10043F3C2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33AF9342E0FC9C10043F3C2 /* ContentView.swift */; };
 		F33AF9372E0FC9C50043F3C2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F33AF9362E0FC9C50043F3C2 /* Assets.xcassets */; };
@@ -18,6 +20,7 @@
 		F39F62B62E1003250097FE24 /* Clip.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F62B52E1003250097FE24 /* Clip.swift */; };
 		F39F62B82E1012690097FE24 /* PreferencesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F62B72E1012690097FE24 /* PreferencesView.swift */; };
 		F39F62BC2E1066300097FE24 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F39F62BE2E1066300097FE24 /* Localizable.strings */; };
+		F3AF696C2E10F70200C8EA7C /* PrivateAPIsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3AF696B2E10F70200C8EA7C /* PrivateAPIsHelper.swift */; };
 		F3C537782E0FCEB800D40622 /* ClipMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C537772E0FCEB800D40622 /* ClipMenuView.swift */; };
 		F3C5377A2E0FD02B00D40622 /* ClipboardMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C537792E0FD02B00D40622 /* ClipboardMonitor.swift */; };
 		F3C5377C2E0FDEF700D40622 /* FileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3C5377B2E0FDEF700D40622 /* FileHelper.swift */; };
@@ -41,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F3369CF42E10CB3200383DC0 /* UpdateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateHelper.swift; sourceTree = "<group>"; };
 		F33AF92F2E0FC9C10043F3C2 /* Clipman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clipman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipmanApp.swift; sourceTree = "<group>"; };
 		F33AF9342E0FC9C10043F3C2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +62,7 @@
 		F39F62BD2E1066300097FE24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F39F62BF2E1066340097FE24 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F39F62C02E106C880097FE24 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		F3AF696B2E10F70200C8EA7C /* PrivateAPIsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivateAPIsHelper.swift; sourceTree = "<group>"; };
 		F3C537772E0FCEB800D40622 /* ClipMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipMenuView.swift; sourceTree = "<group>"; };
 		F3C537792E0FD02B00D40622 /* ClipboardMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClipboardMonitor.swift; sourceTree = "<group>"; };
 		F3C5377B2E0FDEF700D40622 /* FileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileHelper.swift; sourceTree = "<group>"; };
@@ -68,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F3369CF32E10BD5B00383DC0 /* KeyboardShortcuts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +119,7 @@
 			children = (
 				F39F62B92E1066140097FE24 /* Resources */,
 				F33AF9322E0FC9C10043F3C2 /* ClipmanApp.swift */,
+				F3369CF42E10CB3200383DC0 /* UpdateHelper.swift */,
 				F33AF9342E0FC9C10043F3C2 /* ContentView.swift */,
 				F33AF9362E0FC9C50043F3C2 /* Assets.xcassets */,
 				F39F62B52E1003250097FE24 /* Clip.swift */,
@@ -120,6 +127,7 @@
 				F33AF9382E0FC9C50043F3C2 /* Preview Content */,
 				F33AF95D2E0FCA760043F3C2 /* AppDelegate.swift */,
 				F3C537772E0FCEB800D40622 /* ClipMenuView.swift */,
+				F3AF696B2E10F70200C8EA7C /* PrivateAPIsHelper.swift */,
 				F39F62B72E1012690097FE24 /* PreferencesView.swift */,
 				F3C537792E0FD02B00D40622 /* ClipboardMonitor.swift */,
 				F3C5377B2E0FDEF700D40622 /* FileHelper.swift */,
@@ -176,6 +184,9 @@
 			dependencies = (
 			);
 			name = Clipman;
+			packageProductDependencies = (
+				F3369CF22E10BD5B00383DC0 /* KeyboardShortcuts */,
+			);
 			productName = Clipman;
 			productReference = F33AF92F2E0FC9C10043F3C2 /* Clipman.app */;
 			productType = "com.apple.product-type.application";
@@ -250,6 +261,9 @@
 				de,
 			);
 			mainGroup = F33AF9262E0FC9C10043F3C2;
+			packageReferences = (
+				F3369CF12E10BD5B00383DC0 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */,
+			);
 			productRefGroup = F33AF9302E0FC9C10043F3C2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,8 +309,10 @@
 			files = (
 				F33AF95E2E0FCA760043F3C2 /* AppDelegate.swift in Sources */,
 				F39F62B62E1003250097FE24 /* Clip.swift in Sources */,
+				F3AF696C2E10F70200C8EA7C /* PrivateAPIsHelper.swift in Sources */,
 				F3C537782E0FCEB800D40622 /* ClipMenuView.swift in Sources */,
 				F3C5377A2E0FD02B00D40622 /* ClipboardMonitor.swift in Sources */,
+				F3369CF52E10CB3200383DC0 /* UpdateHelper.swift in Sources */,
 				F33AF9352E0FC9C10043F3C2 /* ContentView.swift in Sources */,
 				F39F62B82E1012690097FE24 /* PreferencesView.swift in Sources */,
 				F33AF9332E0FC9C10043F3C2 /* ClipmanApp.swift in Sources */,
@@ -478,17 +494,18 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"Clipman/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Clipman;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.Clipman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -506,17 +523,18 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 29;
 				DEVELOPMENT_ASSET_PATHS = "\"Clipman/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = Clipman;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = io.github.conistuffwow.Clipman;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -632,6 +650,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F3369CF12E10BD5B00383DC0 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/KeyboardShortcuts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F3369CF22E10BD5B00383DC0 /* KeyboardShortcuts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F3369CF12E10BD5B00383DC0 /* XCRemoteSwiftPackageReference "KeyboardShortcuts" */;
+			productName = KeyboardShortcuts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F33AF9272E0FC9C10043F3C2 /* Project object */;
 }

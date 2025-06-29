@@ -39,6 +39,17 @@ struct SettingsView: View {
                     Label("wipeclips", systemImage: "trash")
                 }
             }
+            // Section {
+                    // Button("Check for Updates") {
+                    // checkForUpdates()
+               //  }
+           //  }
+            
+            Section {
+                Button("About Clipman") {
+                    NSApp.orderFrontStandardAboutPanel(nil)
+                }
+            }
         }
         .alert("alertpref", isPresented: $showWipeConfirmation) {
             Button("delall", role: .destructive) {
@@ -51,7 +62,7 @@ struct SettingsView: View {
             
         }
         .padding()
-        .frame(width: 250, height: 100)
+        .frame(width: 300, height: 170)
     }
     
     

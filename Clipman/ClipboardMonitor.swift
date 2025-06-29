@@ -71,4 +71,11 @@ class ClipboardMonitor: ObservableObject {
             saveClips()
         }
     }
+    
+    func togglePinned(clip: Clip) {
+        if let index = clips.firstIndex(where: { $0.id == clip.id }) {
+            clips[index].isPinned.toggle()
+            saveClips()
+        }
+    }
 }

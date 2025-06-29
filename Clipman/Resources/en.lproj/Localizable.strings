@@ -16,3 +16,5 @@
 "alertpref" = "Are you SURE you want to delete ALL clips?";
 "delall" = "DELETE ALL";
 "closetxt" = "Close";
+"unpintxt" = "Unpin";
+"pintxt" = "Pin";

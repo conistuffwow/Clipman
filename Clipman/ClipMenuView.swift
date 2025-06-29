@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AppKit
 
 struct ClipMenuView: View {
     @StateObject private var monitor = ClipboardMonitor()
@@ -59,16 +60,32 @@ struct ClipMenuView: View {
                     ForEach(displayedClips(), id: \.self) { clip in
                         HStack {
                             Button(action: {
-                                NSPasteboard.general.clearContents()
-                                NSPasteboard.general.setString(clip.text, forType: .string)
+                                if clip.text.lowercased().hasPrefix("http://") || clip.text.lowercased().hasPrefix("https://") {
+                                    if let url = URL(string: clip.text) {
+                                        NSWorkspace.shared.open(url)
+                                    }
+                                } else {
+                                    NSPasteboard.general.clearContents()
+                                    NSPasteboard.general.setString(clip.text, forType: .string)
+                                }
                             }) {
-                                Text(clip.text)
-                                    .lineLimit(1)
-                                    .truncationMode(.tail)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                Text(relativeDate(clip.createdAt))
-                                    .font(.caption2)
-                                    .foregroundColor(.secondary)
+                                HStack {
+                                    Text(clip.text)
+                                        .lineLimit(1)
+                                        .truncationMode(.tail)
+                                        .frame(maxWidth: .infinity, alignment: .leading)
+
+                                    Text(relativeDate(clip.createdAt))
+                                        .font(.caption2)
+                                        .foregroundColor(.secondary)
+
+                                
+                                    if clip.text.lowercased().hasPrefix("http://") || clip.text.lowercased().hasPrefix("https://") {
+                                        Image(systemName: "link")
+                                            .foregroundColor(.accentColor)
+                                            .help("Opens in browser")
+                                    }
+                                }
                             }
                             .buttonStyle(PlainButtonStyle())
                             
@@ -76,10 +93,31 @@ struct ClipMenuView: View {
                                 monitor.toggleFavourite(clip: clip)
                             }) {
                                 Image(systemName: clip.isFavourite ? "star.fill" : "star")
-                                    .foregroundColor(clip.isFavourite ? .yellow : .gray)
+                                    .foregroundColor(clip.isFavourite ? dynamicColor(multicolorColor: .yellow) : .gray)
                                     .help(clip.isFavourite ? "unfavtxt" : "favtxt")
                             }
                             .buttonStyle(BorderlessButtonStyle())
+                            
+                            Button(action: {
+                                monitor.togglePinned(clip: clip)
+                            }) {
+                                Image(systemName: clip.isPinned ? "pin.fill" : "pin")
+                                    .foregroundColor(clip.isPinned ? dynamicColor(multicolorColor: .green) : .gray)
+                                    .help(clip.isPinned ? "unpintext" : "pintext")
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                            
+                            if isURL(clip.text) {
+                                Button(action: {
+                                    NSPasteboard.general.clearContents()
+                                    NSPasteboard.general.setString(clip.text, forType: .string)
+                                }) {
+                                    Image(systemName: "doc.on.doc")
+                                        .foregroundColor(dynamicColor(multicolorColor: .yello))
+                                        .help("Copy URL to clipboard")
+                                }
+                                .buttonStyle(BorderlessButtonStyle())
+                            }
                             
                             Button(action: {
                                 if clip.isFavourite {
@@ -90,11 +128,12 @@ struct ClipMenuView: View {
                                 }
                             }) {
                                 Image(systemName: "trash")
-                                    .foregroundColor(.red)
+                                    .foregroundColor(dynamicColor(multicolorColor: .red))
                                     .help("deltx")
                             }
                             .buttonStyle(BorderlessButtonStyle())
                         }
+                
                     }
                     .id(redrawID)
                 }
@@ -120,18 +159,26 @@ struct ClipMenuView: View {
             .padding(.top, 4)
         }
         .padding()
-        .frame(width: 300, height: isExpanded ? 400 : 200)
+        .frame(width: 400, height: isExpanded ? 500 : 310)
     }
     
     private func displayedClips() -> [Clip] {
+        
         let filtered = monitor.clips.filter { clip in
             searchQuery.isEmpty || clip.text.localizedCaseInsensitiveContains(searchQuery)
         }
         
-        let sorted = sortNewestFirst
-        ? filtered.sorted { $0.createdAt > $1.createdAt }
-        : filtered.sorted { $0.createdAt < $1.createdAt }
-        return isExpanded ? sorted : Array(sorted.prefix(5))
+        let sorted = filtered.sorted {
+            if $0.isPinned != $1.isPinned {
+                return $0.isPinned
+            } else {
+                return sortNewestFirst 
+                    ? $0.createdAt > $1.createdAt
+                    : $0.createdAt < $1.createdAt
+            }
+            
+        }
+        return isExpanded ? sorted : Array(sorted.prefix(10))
     }
     
     func relativeDate(_ date: Date) -> String {
@@ -140,3 +187,15 @@ struct ClipMenuView: View {
         return formatter.localizedString(for: date, relativeTo: Date())
     }
 }
+
+func isURL(_ text: String) -> Bool {
+    text.lowercased().hasPrefix("http://") || text.lowercased().hasPrefix("https://")
+}
+
+func dynamicColor(multicolorColor: Color) -> Color {
+    if NSColor.controlAccentColor == NSColor.systemGray {
+        return multicolorColor
+    } else {
+        return .accentColor
+    }
+ }
