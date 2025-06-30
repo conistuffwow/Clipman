@@ -26,7 +26,10 @@ class ClipboardMonitor: ObservableObject {
             if let string = pasteboard.string(forType: .string) {
                 DispatchQueue.main.async {
                     if !self.clips.contains(where: { $0.text == string }) {
-                        let newClip = Clip(text: string)
+                        var newClip = Clip(text: string)
+                        if self.isURL(string) {
+                            newClip.group = .blue
+                        }
                         self.clips.insert(newClip, at: 0)
                         if self.clips.count > 100 {
                             self.clips.removeLast()
@@ -107,5 +110,9 @@ class ClipboardMonitor: ObservableObject {
             saveClips()
         }
     }
+    
+    func isURL(_ text: String) -> Bool {
+       text.lowercased().hasPrefix("http://") || text.lowercased().hasPrefix("https://")
+   }
 }
 

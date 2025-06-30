@@ -21,10 +21,11 @@
 "updavailabletxt" = "Il y a une mise à jour disponible. Voulez-vous aller sur Github pour le télécharger ?";
 "dltxt" = "Télécharger";
 "abttxt" = "À propos";
-"clpg.none" = "Tous les groupes";
-"clpg.red" = "Rouge";
-"clpg.blue" = "Bleu";
-"clpg.green" = "Vert";
-"clpg.yellow" = "Jaune";
-"clpg.purple" = "Violet";
+"clpg.none" = "Texte";
+"clpg.red" = "Important";
+"clpg.blue" = "Liens";
+"clpg.green" = "Favoris";
+"clpg.yellow" = "Extraits de code";
+"clpg.purple" = "Articles";
+"clpg.all" = "All";
 

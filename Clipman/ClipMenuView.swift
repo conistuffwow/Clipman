@@ -20,7 +20,7 @@ struct ClipMenuView: View {
     @State private var showSettings = false
     @State private var showUpdCheck = false
     @State private var updateURL = URL(string: "https://github.com/conistuffwow/clipman/releases/latest/download/clipman.zip")
-    @State private var selectedGroup: ClipGroup? = nil
+    @State private var selectedGroup: ClipGroup? = ClipGroup.none
     let currentVersion = "2.0.0b"
     
     var body: some View {
@@ -49,12 +49,22 @@ struct ClipMenuView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
-            Picker("", selection: $selectedGroup) {
-                Text("clpg.none").tag(ClipGroup?.none)
-                ForEach(ClipGroup.allCases.filter { $0 != .none }) { group in
-                    Text(group.displayName).tag(Optional(group))
+            Spacer()
+            if isExpanded {
+                TextField("search-text", text: $searchQuery)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.bottom, 4)
+                    .onChange(of: searchQuery) { _ in
+                        redrawID = UUID()
+                    }
+            }
                 
+            
+            Picker("", selection: $selectedGroup) {
+                ForEach(ClipGroup.allCases) { group in
+                    Text(group.displayName).tag(Optional(group))
                 }
+                Text("clpg.all").tag(nil as ClipGroup?)
             }
             .pickerStyle(SegmentedPickerStyle())
             .sheet(isPresented: $showSettings) {
@@ -67,14 +77,6 @@ struct ClipMenuView: View {
             
             .padding(.bottom, 4)
             
-            if isExpanded {
-                TextField("search-text", text: $searchQuery)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding(.bottom, 4)
-                    .onChange(of: searchQuery) { _ in
-                        redrawID = UUID()
-                    }
-            }
             ScrollView {
                 VStack(alignment: .leading, spacing: 5) {
                     ForEach(displayedClips(), id: \.self) { clip in
@@ -104,6 +106,7 @@ struct ClipMenuView: View {
                                 
                             }
                             .buttonStyle(PlainButtonStyle())
+                            .help(clip.text)
                             
                             Button(action: {
                                 monitor.toggleFavourite(clip: clip)
@@ -141,7 +144,7 @@ struct ClipMenuView: View {
                                         )
                                         .frame(width: 24, height: 24)
 
-                                    Image(systemName: "paintpalette")
+                                    Image(systemName: "folder")
                                         .foregroundColor(
                                             clip.group.color
                                         )
@@ -204,7 +207,7 @@ struct ClipMenuView: View {
             Button("canceltx", role: .cancel) {}
         }
         .padding()
-        .frame(width: 450, height: isExpanded ? 500 : 310)
+        .frame(width: 470, height: isExpanded ? 500 : 310)
     }
     
     private func checkForUpdates() {
@@ -238,7 +241,7 @@ struct ClipMenuView: View {
             ? filtered.sorted { $0.createdAt > $1.createdAt }
             : filtered.sorted { $0.createdAt < $1.createdAt }
 
-        return isExpanded ? sorted : Array(sorted.prefix(5))
+        return isExpanded ? sorted : Array(sorted.prefix(7))
     }
     func relativeDate(_ date: Date) -> String {
         let formatter = RelativeDateTimeFormatter()
@@ -249,7 +252,7 @@ struct ClipMenuView: View {
     func isURL(_ text: String) -> Bool {
         text.lowercased().hasPrefix("http://") || text.lowercased().hasPrefix("https://")
     }
-    
+
     func iconName(for text: String) -> String {
         if isURL(text) {
             return "globe"
@@ -257,6 +260,8 @@ struct ClipMenuView: View {
             return "doc.text"
         }
     }
+    
+
 
     
     
