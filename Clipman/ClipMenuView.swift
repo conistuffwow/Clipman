@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import AppKit
 
 struct ClipMenuView: View {
     @StateObject private var monitor = ClipboardMonitor()
@@ -17,6 +18,10 @@ struct ClipMenuView: View {
     @State private var searchQuery: String = ""
     @State private var redrawID = UUID()
     @State private var showSettings = false
+    @State private var showUpdCheck = false
+    @State private var updateURL = URL(string: "https://github.com/conistuffwow/clipman/releases/latest/download/clipman.zip")
+    @State private var selectedGroup: ClipGroup? = nil
+    let currentVersion = "1.6.0"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -33,7 +38,7 @@ struct ClipMenuView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .frame(width: 160)
                 .padding(.trailing, 8)
-                
+                Spacer()
                 Button(action: {
                     showSettings = true
                 }) {
@@ -44,6 +49,14 @@ struct ClipMenuView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
+            Picker("", selection: $selectedGroup) {
+                Text("clpg.none").tag(ClipGroup?.none)
+                ForEach(ClipGroup.allCases.filter { $0 != .none }) { group in
+                    Text(group.displayName).tag(Optional(group))
+                
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
             .sheet(isPresented: $showSettings) {
                 SettingsView()
             }
@@ -111,6 +124,35 @@ struct ClipMenuView: View {
                                 }
                                 .buttonStyle(BorderlessButtonStyle())
                             }
+                            
+                            Menu {
+                                ForEach(ClipGroup.allCases) { group in
+                                    Button(group.displayName) {
+                                        monitor.setGroup(for: clip, to: group)
+                                    }
+                                }
+                            } label: {
+                                ZStack {
+                                    Circle()
+                                        .fill(
+                                            (clip.group ?? .none) == .none
+                                                ? Color.gray.opacity(0.2)
+                                                : (clip.group ?? .none).color.opacity(1)
+                                        )
+                                        .frame(width: 24, height: 24)
+
+                                    Image(systemName: "paintpalette")
+                                        .foregroundColor(
+                                            clip.group.color
+                                        )
+                                        .font(.system(size: 12, weight: .medium))
+                            
+                                    
+                                    
+                                }
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                            
                             Button(action: {
                                 if clip.isFavourite {
                                     selectedClipToDelete = clip
@@ -124,6 +166,7 @@ struct ClipMenuView: View {
                                     .help("deltx")
                             }
                             .buttonStyle(BorderlessButtonStyle())
+                        
                             
 
                         }
@@ -151,25 +194,52 @@ struct ClipMenuView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, 4)
         }
+        .onAppear {
+            checkForUpdates()
+        }
+        .alert("updavailabletxt", isPresented: $showUpdCheck) {
+            Button("dltxt") {
+                NSWorkspace.shared.open(URL(string: "https://github.com/conistuffwow/clipman/releases/latest/download/clipman.zip")!)
+            }
+            Button("canceltx", role: .cancel) {}
+        }
         .padding()
-        .frame(width: 400, height: isExpanded ? 500 : 310)
+        .frame(width: 450, height: isExpanded ? 500 : 310)
     }
+    
+    private func checkForUpdates() {
+        guard let url = URL(string: "https://raw.githubusercontent.com/conistuffwow/CSUS/refs/heads/main/clipman/upd.txt") else { return }
+        URLSession.shared.dataTask(with: url) { data, _, error in
+                guard error == nil,
+                      let data = data,
+                      let remoteVersion = String(data: data, encoding: .utf8)?
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+            else { return }
+            
+            if remoteVersion != currentVersion {
+                DispatchQueue.main.async {
+                    showUpdCheck = true
+                }
+            }
+                        
+        }.resume()
+    }
+    
+    
     
     private func displayedClips() -> [Clip] {
         let filtered = monitor.clips.filter { clip in
-            searchQuery.isEmpty || clip.text.localizedCaseInsensitiveContains(searchQuery)
+            let matchesSearch = searchQuery.isEmpty || clip.text.localizedCaseInsensitiveContains(searchQuery)
+            let matchesGroup = selectedGroup == nil || clip.group == selectedGroup!
+            return matchesSearch && matchesGroup
         }
-        
-        let sorted = filtered.sorted {
-            if $0.isFavourite != $1.isFavourite {
-                return $0.isFavourite
-            } else {
-                return sortNewestFirst ? $0.createdAt > $1.createdAt : $0.createdAt < $1.createdAt
-            }
-        }
-        return isExpanded ? sorted : Array(sorted.prefix(10))
+
+        let sorted = sortNewestFirst
+            ? filtered.sorted { $0.createdAt > $1.createdAt }
+            : filtered.sorted { $0.createdAt < $1.createdAt }
+
+        return isExpanded ? sorted : Array(sorted.prefix(5))
     }
-    
     func relativeDate(_ date: Date) -> String {
         let formatter = RelativeDateTimeFormatter()
         formatter.unitsStyle = .short
@@ -187,4 +257,7 @@ struct ClipMenuView: View {
             return "doc.text"
         }
     }
+
+    
+    
 }

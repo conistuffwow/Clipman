@@ -18,3 +18,12 @@
 "closetxt" = "Ende";
 "unpintxt" = "Abnehmen";
 "pintxt" = "Reißzwecke";
+"updavailabletxt" = "Es ist ein Update verfügbar. Möchten Sie zu Github gehen, um es herunterzuladen?";
+"dltxt" = "Herunterladen";
+"abttxt" = "Über";
+"clpg.none" = "Alle Gruppen";
+"clpg.red" = "Rot";
+"clpg.blue" = "Blau";
+"clpg.green" = "Grün";
+"clpg.yellow" = "Gelb";
+"clpg.purple" = "Lila";

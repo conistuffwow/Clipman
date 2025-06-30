@@ -18,3 +18,12 @@
 "closetxt" = "Close";
 "unpintxt" = "Unpin";
 "pintxt" = "Pin";
+"updavailabletxt" = "There is an update available. Do you want to go to Github to download it?";
+"dltxt" = "Download";
+"abttxt" = "All Groups";
+"clpg.none" = "None";
+"clpg.red" = "Red";
+"clpg.blue" = "Blue";
+"clpg.green" = "Green";
+"clpg.yellow" = "Yellow";
+"clpg.purple" = "Purple";

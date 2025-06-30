@@ -101,5 +101,11 @@ class ClipboardMonitor: ObservableObject {
             return localURL.appendingPathComponent("clips.json")
         }
     }
+    func setGroup(for clip: Clip, to group: ClipGroup) {
+        if let index = clips.firstIndex(of: clip) {
+            clips[index].group = group
+            saveClips()
+        }
+    }
 }
 
