@@ -21,7 +21,7 @@ struct ClipMenuView: View {
     @State private var showUpdCheck = false
     @State private var updateURL = URL(string: "https://github.com/conistuffwow/clipman/releases/latest/download/clipman.zip")
     @State private var selectedGroup: ClipGroup? = ClipGroup.none
-    let currentVersion = "2.0.0b"
+    let currentVersion = "2.0.0"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
