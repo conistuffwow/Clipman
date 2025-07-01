@@ -28,4 +28,7 @@
 "clpg.yellow" = "Extraits de code";
 "clpg.purple" = "Articles";
 "clpg.all" = "All";
+"newupdtxt" = "New update available!";
+"verlatest" = "There is a new version available!";
+"nologtxt" = "No changelog available.";
 

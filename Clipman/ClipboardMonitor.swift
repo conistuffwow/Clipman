@@ -114,5 +114,20 @@ class ClipboardMonitor: ObservableObject {
     func isURL(_ text: String) -> Bool {
        text.lowercased().hasPrefix("http://") || text.lowercased().hasPrefix("https://")
    }
+    
+    func edit(clip: Clip, newText: String) {
+        if let index = clips.firstIndex(where:{ $0.id == clip.id }) {
+            clips[index] = Clip(
+                id: clip.id,
+                text: newText,
+                isFavourite: clip.isFavourite,
+                createdAt: clip.createdAt,
+                imageFilename: clip.imageFilename,
+                isPinned: clip.isPinned,
+                group: clip.group
+            )
+            saveClips()
+        }
+    }
 }
 

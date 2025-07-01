@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 import ServiceManagement
 import AppKit
+import WebKit
 
 struct SettingsView: View {
     @AppStorage("sortNewestFirst") var sortNewestFirst: Bool = true

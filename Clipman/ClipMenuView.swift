@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 import AppKit
-
+import WebKit
 struct ClipMenuView: View {
     @StateObject private var monitor = ClipboardMonitor()
     @State private var isExpanded = false
@@ -21,7 +21,16 @@ struct ClipMenuView: View {
     @State private var showUpdCheck = false
     @State private var updateURL = URL(string: "https://github.com/conistuffwow/clipman/releases/latest/download/clipman.zip")
     @State private var selectedGroup: ClipGroup? = ClipGroup.none
-    let currentVersion = "2.0.0"
+    let currentVersion = "2.1.0"
+    @State private var changelogText = ""
+    @State private var changelogURL = URL(string: "https://conistuffwow.github.io/CSUS/clipman/changelog.txt")!
+    @State private var latestVersionURL = URL(string: "https://raw.githubusercontent.com/conistuffwow/CSUS/refs/heads/main/clipman/upd.txt")!
+    
+    @State private var latestVersion: String = ""
+    
+    @State private var showEditSheet = false
+    @State private var selectedClipToEdit: Clip? = nil
+    @State private var editedText: String = ""
     
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -157,6 +166,16 @@ struct ClipMenuView: View {
                             .buttonStyle(BorderlessButtonStyle())
                             
                             Button(action: {
+                                selectedClipToEdit = clip
+                                editedText = clip.text
+                                showEditSheet = true
+                            }) {
+                                Image(systemName: "pencil")
+                                    .foregroundColor(.accentColor)
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                            
+                            Button(action: {
                                 if clip.isFavourite {
                                     selectedClipToDelete = clip
                                     showDeleteConfirmation = true
@@ -169,6 +188,8 @@ struct ClipMenuView: View {
                                     .help("deltx")
                             }
                             .buttonStyle(BorderlessButtonStyle())
+                            
+                            
                         
                             
 
@@ -200,31 +221,87 @@ struct ClipMenuView: View {
         .onAppear {
             checkForUpdates()
         }
-        .alert("updavailabletxt", isPresented: $showUpdCheck) {
-            Button("dltxt") {
-                NSWorkspace.shared.open(URL(string: "https://github.com/conistuffwow/clipman/releases/latest/download/clipman.zip")!)
+        .sheet(isPresented: $showUpdCheck) {
+            VStack(alignment: .leading, spacing: 12) {
+                Text("newupdtxt")
+                    .font(.title2)
+                    .bold()
+                
+                Text("verlatest")
+                    .font(.subheadline)
+                    .padding(.bottom, 4)
+                
+                WebView(url: URL(string: "https://conistuffwow.github.io/CSUS/clipman/changelog.txt")!)
+                    .frame(height: 300)
+                
+                HStack {
+                    Spacer()
+                    Button("canceltx") {
+                        showUpdCheck = false
+                    }
+                    Button("dltxt") {
+                        NSWorkspace.shared.open(URL(string: "https://github.com/conistuffwow/clipman/releases/latest/download/clipman.zip")!)
+                        showUpdCheck = false
+                    }
+                    .keyboardShortcut(.defaultAction)
+                }
             }
-            Button("canceltx", role: .cancel) {}
+            .padding()
+            .frame(width: 420)
         }
         .padding()
         .frame(width: 470, height: isExpanded ? 500 : 310)
+        
+        
+        .sheet(isPresented: $showEditSheet) {
+            VStack(alignment: .leading, spacing: 12) {
+                Text("edit.txt")
+                    .font(.headline)
+                
+                TextEditor(text: $editedText)
+                    .frame(minHeight: 120)
+                    .border(Color.gray.opacity(0.3), width: 1)
+                    .padding(.bottom, 8)
+                
+                HStack {
+                    Spacer()
+                    Button("canceltx") {
+                        showEditSheet = false
+                    }
+                    Button("savetx") {
+                        if let clip = selectedClipToEdit {
+                            monitor.edit(clip: clip, newText: editedText)
+                        }
+                        showEditSheet = false
+                    }
+                    .keyboardShortcut(.defaultAction)
+                }
+            }
+            .padding()
+            .frame(width: 400)
+        }
     }
     
     private func checkForUpdates() {
-        guard let url = URL(string: "https://raw.githubusercontent.com/conistuffwow/CSUS/refs/heads/main/clipman/upd.txt") else { return }
-        URLSession.shared.dataTask(with: url) { data, _, error in
-                guard error == nil,
-                      let data = data,
-                      let remoteVersion = String(data: data, encoding: .utf8)?
-                    .trimmingCharacters(in: .whitespacesAndNewlines)
-            else { return }
-            
-            if remoteVersion != currentVersion {
+        URLSession.shared.dataTask(with: latestVersionURL) { data, _, _ in
+            if let data = data, let versionString = String(data: data, encoding: .utf8)?.trimmingCharacters(in: .whitespacesAndNewlines), versionString != currentVersion {
                 DispatchQueue.main.async {
-                    showUpdCheck = true
+                    self.latestVersion = versionString
                 }
+                
+                URLSession.shared.dataTask(with: changelogURL) { changelogData, _, _ in
+                        if let changelogData = changelogData,
+                           let changelog = String(data: changelogData, encoding: .utf8) {
+                            DispatchQueue.main.async {
+                                changelogText = changelog
+                                print(changelogText)
+                                self.showUpdCheck = true
+                            }
+                        } else {
+                            print("couldnt display changelog")
+                        }
+                }.resume()
             }
-                        
         }.resume()
     }
     
@@ -259,6 +336,20 @@ struct ClipMenuView: View {
         } else {
             return "doc.text"
         }
+    }
+    
+    struct WebView: NSViewRepresentable {
+        let url: URL
+
+        func makeNSView(context: Context) -> WKWebView {
+            return WKWebView()
+        }
+
+        func updateNSView(_ webView: WKWebView, context: Context) {
+            let request = URLRequest(url: url)
+            webView.load(request)
+        }
+        typealias NSViewType = WKWebView
     }
     
 
